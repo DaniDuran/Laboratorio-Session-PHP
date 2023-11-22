@@ -3,7 +3,9 @@
 class UserSession{
 
     public function __construct(){
+        session_save_path('C:\www\xampp\htdocs\Laboratorio-Session-PHP\session');  
         session_start();
+        
     }
 
     public function setCurrentUser($user){
