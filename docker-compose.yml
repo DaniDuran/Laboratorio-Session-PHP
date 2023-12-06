@@ -1,0 +1,26 @@
+version: '3.5'
+
+services:
+  php-app:
+    container_name: Laboratorio-Session-PHP  # Nombre del contenedor
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '4501:80'
+    volumes:
+      - ./includes:/var/www/html/includes
+      - ./vistas:/var/www/html/vistas
+    environment:
+      - DB_HOST=192.168.1.12
+      - DB_DATABASE=compras
+      - DB_USER=root
+      - DB_PASSWORD=admin1234
+    restart: always
+    networks:
+      - mynetwork  # Agrega una etiqueta de red para organizar
+
+networks:
+  mynetwork:
+    driver: bridge
+#docker-compose up -d --build
